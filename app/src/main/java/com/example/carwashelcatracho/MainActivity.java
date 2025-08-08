@@ -1,51 +1,40 @@
 package com.example.carwashelcatracho;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
+
+import android.os.Bundle;
+
+import com.example.carwashelcatracho.Utils.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button btn_anadir, btn_contacto;
-
+    private NavController navController;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-
-
-        btn_anadir = findViewById(R.id.btnanadir);
-        btn_anadir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,CreateActivity.class);
-                startActivity(intent);
+        
+        sessionManager = new SessionManager(this);
+        
+        // Set up Navigation Controller
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        
+        // Check if user is already logged in
+        if (sessionManager.isLoggedIn()) {
+            if (sessionManager.isAdmin()) {
+                navController.navigate(R.id.adminDashboardFragment);
+            } else {
+                navController.navigate(R.id.clientDashboardFragment);
             }
-        });
+        }
+    }
 
-        //Lista
-        btn_contacto = findViewById(R.id.btncontac);
-        btn_contacto.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ListActivity.class);
-            startActivity(intent);
-        });
-
-
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        return navController.navigateUp() || super.onSupportNavigateUp();
     }
 }
