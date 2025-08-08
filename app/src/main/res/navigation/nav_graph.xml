@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <!-- Main Fragment -->
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.carwashelcatracho.Fragments.MainFragment"
+        android:label="Car Wash El Catracho"
+        tools:layout="@layout/fragment_main" />
+
+    <!-- Login Fragments -->
+    <fragment
+        android:id="@+id/loginClientFragment"
+        android:name="com.example.carwashelcatracho.Fragments.LoginClientFragment"
+        android:label="Login Cliente"
+        tools:layout="@layout/fragment_login_client" />
+
+    <fragment
+        android:id="@+id/loginAdminFragment"
+        android:name="com.example.carwashelcatracho.Fragments.LoginAdminFragment"
+        android:label="Login Admin"
+        tools:layout="@layout/fragment_login_admin" />
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.carwashelcatracho.Fragments.RegisterFragment"
+        android:label="Registro"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/emailVerificationFragment"
+        android:name="com.example.carwashelcatracho.Fragments.EmailVerificationFragment"
+        android:label="Verificación de Email"
+        tools:layout="@layout/fragment_email_verification" />
+
+    <!-- Client Dashboard -->
+    <fragment
+        android:id="@+id/clientDashboardFragment"
+        android:name="com.example.carwashelcatracho.Fragments.ClientDashboardFragment"
+        android:label="Dashboard Cliente"
+        tools:layout="@layout/fragment_client_dashboard" />
+
+    <!-- Vehicle Management -->
+    <fragment
+        android:id="@+id/vehiclesFragment"
+        android:name="com.example.carwashelcatracho.Fragments.VehiclesFragment"
+        android:label="Mis Vehículos"
+        tools:layout="@layout/fragment_vehicles" />
+
+    <fragment
+        android:id="@+id/addVehicleFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AddVehicleFragment"
+        android:label="Agregar Vehículo"
+        tools:layout="@layout/fragment_add_vehicle" />
+
+    <fragment
+        android:id="@+id/editVehicleFragment"
+        android:name="com.example.carwashelcatracho.Fragments.EditVehicleFragment"
+        android:label="Editar Vehículo"
+        tools:layout="@layout/fragment_edit_vehicle">
+        <argument
+            android:name="vehicleId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Services -->
+    <fragment
+        android:id="@+id/servicesFragment"
+        android:name="com.example.carwashelcatracho.Fragments.ServicesFragment"
+        android:label="Servicios Disponibles"
+        tools:layout="@layout/fragment_services" />
+
+    <!-- Quotations -->
+    <fragment
+        android:id="@+id/quotationsFragment"
+        android:name="com.example.carwashelcatracho.Fragments.QuotationsFragment"
+        android:label="Mis Cotizaciones"
+        tools:layout="@layout/fragment_quotations" />
+
+    <fragment
+        android:id="@+id/createQuotationFragment"
+        android:name="com.example.carwashelcatracho.Fragments.CreateQuotationFragment"
+        android:label="Crear Cotización"
+        tools:layout="@layout/fragment_create_quotation" />
+
+    <fragment
+        android:id="@+id/quotationDetailFragment"
+        android:name="com.example.carwashelcatracho.Fragments.QuotationDetailFragment"
+        android:label="Detalle de Cotización"
+        tools:layout="@layout/fragment_quotation_detail">
+        <argument
+            android:name="quotationId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- History -->
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.carwashelcatracho.Fragments.HistoryFragment"
+        android:label="Historial de Servicios"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/rateServiceFragment"
+        android:name="com.example.carwashelcatracho.Fragments.RateServiceFragment"
+        android:label="Calificar Servicio"
+        tools:layout="@layout/fragment_rate_service">
+        <argument
+            android:name="historyId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Notifications -->
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.carwashelcatracho.Fragments.NotificationsFragment"
+        android:label="Notificaciones"
+        tools:layout="@layout/fragment_notifications" />
+
+    <!-- Profile -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.carwashelcatracho.Fragments.ProfileFragment"
+        android:label="Mi Perfil"
+        tools:layout="@layout/fragment_profile" />
+
+    <!-- Admin Dashboard -->
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AdminDashboardFragment"
+        android:label="Dashboard Admin"
+        tools:layout="@layout/fragment_admin_dashboard" />
+
+    <!-- Admin Quotations -->
+    <fragment
+        android:id="@+id/adminQuotationsFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AdminQuotationsFragment"
+        android:label="Cotizaciones Pendientes"
+        tools:layout="@layout/fragment_admin_quotations" />
+
+    <fragment
+        android:id="@+id/adminQuotationDetailFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AdminQuotationDetailFragment"
+        android:label="Detalle de Cotización"
+        tools:layout="@layout/fragment_admin_quotation_detail">
+        <argument
+            android:name="quotationId"
+            app:argType="integer" />
+    </fragment>
+
+    <!-- Admin History -->
+    <fragment
+        android:id="@+id/adminHistoryFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AdminHistoryFragment"
+        android:label="Historial General"
+        tools:layout="@layout/fragment_admin_history" />
+
+    <!-- Admin Users -->
+    <fragment
+        android:id="@+id/adminUsersFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AdminUsersFragment"
+        android:label="Gestión de Usuarios"
+        tools:layout="@layout/fragment_admin_users" />
+
+    <!-- Admin Reports -->
+    <fragment
+        android:id="@+id/adminReportsFragment"
+        android:name="com.example.carwashelcatracho.Fragments.AdminReportsFragment"
+        android:label="Reportes"
+        tools:layout="@layout/fragment_admin_reports" />
+
+    <!-- Navigation Actions -->
+    <action
+        android:id="@+id/action_main_to_loginClient"
+        app:destination="@id/loginClientFragment" />
+
+    <action
+        android:id="@+id/action_main_to_loginAdmin"
+        app:destination="@id/loginAdminFragment" />
+
+    <action
+        android:id="@+id/action_main_to_register"
+        app:destination="@id/registerFragment" />
+
+    <action
+        android:id="@+id/action_loginClient_to_register"
+        app:destination="@id/registerFragment" />
+
+    <action
+        android:id="@+id/action_register_to_emailVerification"
+        app:destination="@id/emailVerificationFragment" />
+
+    <action
+        android:id="@+id/action_loginClient_to_clientDashboard"
+        app:destination="@id/clientDashboardFragment"
+        app:popUpTo="@id/mainFragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_loginAdmin_to_adminDashboard"
+        app:destination="@id/adminDashboardFragment"
+        app:popUpTo="@id/mainFragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_clientDashboard_to_vehicles"
+        app:destination="@id/vehiclesFragment" />
+
+    <action
+        android:id="@+id/action_clientDashboard_to_services"
+        app:destination="@id/servicesFragment" />
+
+    <action
+        android:id="@+id/action_clientDashboard_to_quotations"
+        app:destination="@id/quotationsFragment" />
+
+    <action
+        android:id="@+id/action_clientDashboard_to_history"
+        app:destination="@id/historyFragment" />
+
+    <action
+        android:id="@+id/action_clientDashboard_to_notifications"
+        app:destination="@id/notificationsFragment" />
+
+    <action
+        android:id="@+id/action_clientDashboard_to_profile"
+        app:destination="@id/profileFragment" />
+
+    <action
+        android:id="@+id/action_vehicles_to_addVehicle"
+        app:destination="@id/addVehicleFragment" />
+
+    <action
+        android:id="@+id/action_vehicles_to_editVehicle"
+        app:destination="@id/editVehicleFragment" />
+
+    <action
+        android:id="@+id/action_quotations_to_createQuotation"
+        app:destination="@id/createQuotationFragment" />
+
+    <action
+        android:id="@+id/action_quotations_to_quotationDetail"
+        app:destination="@id/quotationDetailFragment" />
+
+    <action
+        android:id="@+id/action_history_to_rateService"
+        app:destination="@id/rateServiceFragment" />
+
+    <action
+        android:id="@+id/action_adminDashboard_to_quotations"
+        app:destination="@id/adminQuotationsFragment" />
+
+    <action
+        android:id="@+id/action_adminDashboard_to_history"
+        app:destination="@id/adminHistoryFragment" />
+
+    <action
+        android:id="@+id/action_adminDashboard_to_users"
+        app:destination="@id/adminUsersFragment" />
+
+    <action
+        android:id="@+id/action_adminDashboard_to_reports"
+        app:destination="@id/adminReportsFragment" />
+
+    <action
+        android:id="@+id/action_adminQuotations_to_quotationDetail"
+        app:destination="@id/adminQuotationDetailFragment" />
+
+</navigation>
