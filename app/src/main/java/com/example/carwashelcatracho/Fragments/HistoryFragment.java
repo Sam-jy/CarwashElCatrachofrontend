@@ -42,7 +42,7 @@ public class HistoryFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerView = view.findViewById(R.id.recycler_history);
+        recyclerView = view.findViewById(R.id.rvHistorial);
         progressBar = view.findViewById(R.id.progress_bar);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new HistoryAdapter(new ArrayList<>());

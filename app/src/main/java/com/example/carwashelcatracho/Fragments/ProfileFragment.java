@@ -62,10 +62,15 @@ public class ProfileFragment extends Fragment {
                 showLoading(false);
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                     User user = response.body().getData();
-                    tvNombre.setText(user.getNombreCompleto());
+                    tvNombre.setText(user.getNombre());
+                    tvApellido.setText(user.getApellido());
                     tvEmail.setText(user.getEmail());
                     tvTelefono.setText(user.getTelefono());
                     tvPais.setText(user.getPais());
+                    tvTipoUsuario.setText(user.getTipoUsuario());
+                    tvFechaCreacion.setText(user.getFechaCreacion());
+                    tvFechaActualizacion.setText(user.getFechaActualizacion());
+                    tvActivo.setText(user.getActivo() == 1 ? "Sí" : "No");
                 } else {
                     Toast.makeText(requireContext(), "No se pudo cargar el perfil", Toast.LENGTH_LONG).show();
                 }

@@ -42,7 +42,7 @@ public class NotificationsFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        recyclerView = view.findViewById(R.id.recycler_notifications);
+        recyclerView = view.findViewById(R.id.rvNotificaciones);
         progressBar = view.findViewById(R.id.progress_bar);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new NotificationsAdapter(new ArrayList<>());
