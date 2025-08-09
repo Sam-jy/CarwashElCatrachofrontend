@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bienvenido, Admin"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
+        <!-- Usuarios -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Usuarios"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clientes"
+                    android:textColor="@color/text_secondary" />
+                <TextView
+                    android:id="@+id/tv_usuarios_clientes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verificados"
+                    android:textColor="@color/text_secondary" />
+                <TextView
+                    android:id="@+id/tv_usuarios_verificados_clientes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admins"
+                    android:textColor="@color/text_secondary" />
+                <TextView
+                    android:id="@+id/tv_usuarios_admins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Verificados"
+                    android:textColor="@color/text_secondary" />
+                <TextView
+                    android:id="@+id/tv_usuarios_verificados_admins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/text_primary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Cotizaciones -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Cotizaciones"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView android:text="Totales" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_total" android:text="0" android:textSize="16sp" android:textColor="@color/text_primary" />
+            <TextView android:text="Pendientes" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_pendientes" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Enviadas" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_enviadas" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Aceptadas" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_aceptadas" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Completadas" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_completadas" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Rechazadas" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_rechazadas" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Canceladas" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_canceladas" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Precio promedio" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_precio_promedio" android:text="L. 0.00" android:textColor="@color/text_primary" />
+            <TextView android:text="Ingresos totales" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_cot_ingresos_totales" android:text="L. 0.00" android:textColor="@color/text_primary" />
+        </LinearLayout>
+
+        <!-- Servicios -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Servicios"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView android:text="Total servicios" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_serv_total" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Disponibles domicilio" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_serv_domicilio" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Disponibles centro" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_serv_centro" android:text="0" android:textColor="@color/text_primary" />
+            <TextView android:text="Precio promedio" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_serv_precio_promedio" android:text="L. 0.00" android:textColor="@color/text_primary" />
+        </LinearLayout>
+
+        <!-- Ingresos mes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingresos del mes"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView android:text="Total" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_ingresos_mes_total" android:text="L. 0.00" android:textColor="@color/text_primary" />
+            <TextView android:text="Servicios" android:textColor="@color/text_secondary" />
+            <TextView android:id="@+id/tv_ingresos_mes_servicios" android:text="0" android:textColor="@color/text_primary" />
+        </LinearLayout>
+
+        <!-- Servicios populares -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Servicios populares"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/list_servicios_populares"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp" />
+
+        <!-- Clientes frecuentes -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Clientes frecuentes"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/list_clientes_frecuentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp" />
+
+    </LinearLayout>
+</ScrollView> 

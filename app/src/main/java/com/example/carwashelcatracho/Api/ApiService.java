@@ -6,6 +6,7 @@ import com.example.carwashelcatracho.Models.Quotation;
 import com.example.carwashelcatracho.Models.Service;
 import com.example.carwashelcatracho.Models.User;
 import com.example.carwashelcatracho.Models.Vehicle;
+import com.example.carwashelcatracho.Models.Notification;
 
 import java.util.List;
 import java.util.Map;
@@ -100,7 +101,7 @@ public interface ApiService {
     // =============================================
     
     @GET("api/cliente/notificaciones")
-    Call<ApiResponse<List<Map<String, Object>>>> getNotifications(@Header("Authorization") String token, @Query("no_leidas") String noLeidas);
+    Call<ApiResponse<List<Notification>>> getClientNotifications(@Header("Authorization") String token);
     
     @POST("api/cliente/notificaciones/{id}/leer")
     Call<ApiResponse<Void>> markNotificationAsRead(@Header("Authorization") String token, @Path("id") int notificationId);
@@ -113,7 +114,7 @@ public interface ApiService {
     // =============================================
     
     @GET("api/cliente/historial")
-    Call<ApiResponse<List<Map<String, Object>>>> getHistory(@Header("Authorization") String token, @Query("limit") Integer limit);
+    Call<ApiResponse<List<Quotation>>> getClientHistory(@Header("Authorization") String token);
     
     @GET("api/cliente/historial/aceite/{vehiculoId}")
     Call<ApiResponse<List<Map<String, Object>>>> getOilChangeHistory(@Header("Authorization") String token, @Path("vehiculoId") int vehicleId);

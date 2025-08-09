@@ -3,7 +3,7 @@ package com.example.carwashelcatracho.Config;
 public class RestApiMethods {
 
     // URL base del backend PHP
-    public static final String BASE_URL = "http://192.168.22.1/carwash-reservaciones-api/";
+    public static final String BASE_URL = "http://192.168.100.7/carwash-reservaciones-api/";
 
     // Endpoints del CRUD
     public static final String EndpointGetPersons   = BASE_URL + "GetPersons.php";
