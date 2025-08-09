@@ -172,6 +172,30 @@
         android:name="com.example.carwashelcatracho.Fragments.AdminReportsFragment"
         android:label="Reportes"
         tools:layout="@layout/fragment_admin_reports" />
+    
+    <fragment
+    android:id="@+id/historyFragment"
+    android:name="com.example.carwashelcatracho.Fragments.HistoryFragment"
+    android:label="Historial de Servicios"
+    tools:layout="@layout/fragment_history" />
+
+    <fragment
+    android:id="@+id/profileFragment"
+    android:name="com.example.carwashelcatracho.Fragments.ProfileFragment"
+    android:label="Mi Perfil"
+    tools:layout="@layout/fragment_profile" />
+
+    <fragment
+    android:id="@+id/notificationsFragment"
+    android:name="com.example.carwashelcatracho.Fragments.NotificationsFragment"
+    android:label="Notificaciones"
+    tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+    android:id="@+id/adminDashboardFragment"
+    android:name="com.example.carwashelcatracho.Fragments.AdminDashboardFragment"
+    android:label="Dashboard Admin"
+    tools:layout="@layout/fragment_admin_dashboard" />
 
     <!-- Navigation Actions -->
     <action

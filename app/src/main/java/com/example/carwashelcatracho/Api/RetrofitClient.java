@@ -13,16 +13,13 @@ public class RetrofitClient {
     private Retrofit retrofit;
 
     private RetrofitClient() {
-        // Create logging interceptor
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        // Create OkHttp client with logging
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .build();
 
-        // Create Retrofit instance
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)

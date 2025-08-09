@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 import com.example.carwashelcatracho.Utils.SessionManager;
 
+import androidx.navigation.fragment.NavHostFragment;
+
 public class MainActivity extends AppCompatActivity {
     private NavController navController;
     private SessionManager sessionManager;
@@ -17,19 +19,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         sessionManager = new SessionManager(this);
-        
-        // Set up Navigation Controller
-        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        
-        // Check if user is already logged in
+
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        navController = navHostFragment.getNavController();
+
         if (sessionManager.isLoggedIn()) {
-            if (sessionManager.isAdmin()) {
-                navController.navigate(R.id.adminDashboardFragment);
-            } else {
-                navController.navigate(R.id.clientDashboardFragment);
-            }
+            new android.os.Handler().post(() -> {
+                if (sessionManager.isAdmin()) {
+                    navController.navigate(R.id.adminDashboardFragment);
+                } else {
+                    navController.navigate(R.id.clientDashboardFragment);
+                }
+            });
         }
     }
 

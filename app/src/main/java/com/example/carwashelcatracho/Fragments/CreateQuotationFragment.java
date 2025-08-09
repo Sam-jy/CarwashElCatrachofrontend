@@ -208,11 +208,12 @@ public class CreateQuotationFragment extends Fragment {
         Map<String, Object> body = new HashMap<>();
         body.put("vehiculo_id", vehicles.get(vehicleIndex).getId());
         body.put("servicio_id", services.get(serviceIndex).getId());
-        body.put("tipo_ubicacion", ubicacion);
-        body.put("direccion_servicio", TextUtils.isEmpty(direccion) ? null : direccion);
         body.put("fecha_servicio", fecha);
         body.put("hora_servicio", hora);
-        if (!TextUtils.isEmpty(notas)) body.put("notas_cliente", notas);
+        body.put("direccion", TextUtils.isEmpty(direccion) ? null : direccion);
+        body.put("tipo_ubicacion", ubicacion);
+
+        if (!TextUtils.isEmpty(notas)) body.put("notas", notas); 
 
         apiService.createQuotation(sessionManager.getAuthHeader(), body).enqueue(new Callback<ApiResponse<com.example.carwashelcatracho.Models.Quotation>>() {
             @Override
