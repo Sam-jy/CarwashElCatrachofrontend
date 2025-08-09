@@ -55,14 +55,6 @@
             </intent-filter>
 
         </activity>
-        <activity
-            android:name=".CreateActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".ListActivity" />
-        <activity android:name=".DetailActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
