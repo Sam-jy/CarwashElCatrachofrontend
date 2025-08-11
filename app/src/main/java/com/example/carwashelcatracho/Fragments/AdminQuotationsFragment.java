@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,8 @@ public class AdminQuotationsFragment extends Fragment {
     private TextView tvEmpty;
     private ProgressBar progressBar;
     private androidx.swiperefreshlayout.widget.SwipeRefreshLayout swipeRefreshLayout;
+    private AutoCompleteTextView spinnerEstado;
+    private com.google.android.material.button.MaterialButton btnFilter;
 
     private ApiService apiService;
     private SessionManager sessionManager;
@@ -56,6 +60,8 @@ public class AdminQuotationsFragment extends Fragment {
         tvEmpty = view.findViewById(R.id.tv_empty);
         progressBar = view.findViewById(R.id.progress);
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
+        spinnerEstado = view.findViewById(R.id.spinner_estado);
+        btnFilter = view.findViewById(R.id.btn_filter);
 
         apiService = RetrofitClient.getInstance().getApiService();
         sessionManager = new SessionManager(requireContext());
@@ -74,9 +80,29 @@ public class AdminQuotationsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         recyclerView.setAdapter(adapter);
 
-        swipeRefreshLayout.setOnRefreshListener(this::loadPending);
+        setupSpinner();
+        setupClickListeners();
 
-        loadPending();
+        swipeRefreshLayout.setOnRefreshListener(this::loadQuotations);
+
+        loadQuotations();
+    }
+
+    private void setupSpinner() {
+        String[] estados = {"Todas", "Pendiente", "Enviada", "Aceptada", "Completada", "Rechazada", "Cancelada"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, estados);
+        spinnerEstado.setAdapter(adapter);
+        spinnerEstado.setText("Todas", false);
+    }
+
+    private void setupClickListeners() {
+        btnFilter.setOnClickListener(v -> loadQuotations());
+    }
+
+    private String getSelectedEstado() {
+        String selected = spinnerEstado.getText().toString();
+        if ("Todas".equals(selected)) return "";
+        return selected.toLowerCase();
     }
 
     private void setLoading(boolean loading) {
@@ -84,9 +110,10 @@ public class AdminQuotationsFragment extends Fragment {
         tvEmpty.setVisibility(View.GONE);
     }
 
-    private void loadPending() {
+    private void loadQuotations() {
         setLoading(true);
-        apiService.getPendingQuotations(sessionManager.getAuthHeader()).enqueue(new Callback<ApiResponse<List<Quotation>>>() {
+        String estado = getSelectedEstado();
+        apiService.getAdminQuotations(sessionManager.getAuthHeader(), estado, null).enqueue(new Callback<ApiResponse<List<Quotation>>>() {
             @Override
             public void onResponse(Call<ApiResponse<List<Quotation>>> call, Response<ApiResponse<List<Quotation>>> response) {
                 setLoading(false);
@@ -150,7 +177,7 @@ public class AdminQuotationsFragment extends Fragment {
                         setLoading(false);
                         if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                             Toast.makeText(requireContext(), "Cotización enviada al cliente", Toast.LENGTH_SHORT).show();
-                            loadPending();
+                            loadQuotations();
                         } else {
                             Toast.makeText(requireContext(), "No se pudo responder", Toast.LENGTH_LONG).show();
                         }
@@ -192,7 +219,7 @@ public class AdminQuotationsFragment extends Fragment {
                         setLoading(false);
                         if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                             Toast.makeText(requireContext(), "Servicio completado", Toast.LENGTH_SHORT).show();
-                            loadPending();
+                            loadQuotations();
                         } else {
                             Toast.makeText(requireContext(), "No se pudo completar", Toast.LENGTH_LONG).show();
                         }
@@ -215,7 +242,7 @@ public class AdminQuotationsFragment extends Fragment {
                         setLoading(false);
                         if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
                             Toast.makeText(requireContext(), "Cotización cancelada", Toast.LENGTH_SHORT).show();
-                            loadPending();
+                            loadQuotations();
                         } else {
                             Toast.makeText(requireContext(), "No se pudo cancelar", Toast.LENGTH_LONG).show();
                         }
@@ -281,6 +308,15 @@ public class AdminQuotationsFragment extends Fragment {
                 tvTitle.setText(q.getServicioNombre() + " • " + q.getPrecioFormateado());
                 tvSubtitle.setText(q.getClienteNombre() + " • " + q.getVehiculoDescripcion());
                 tvStatus.setText(q.getEstadoDisplay());
+                
+                // Mostrar botones según el estado
+                boolean isPendiente = q.isPendiente();
+                boolean isAceptada = q.isAceptada();
+                
+                btnRespond.setVisibility(isPendiente ? View.VISIBLE : View.GONE);
+                btnComplete.setVisibility(isAceptada ? View.VISIBLE : View.GONE);
+                btnCancel.setVisibility(isPendiente ? View.VISIBLE : View.GONE);
+                
                 btnRespond.setOnClickListener(v -> l.onRespond(q));
                 btnComplete.setOnClickListener(v -> l.onComplete(q));
                 btnCancel.setOnClickListener(v -> l.onCancel(q));
