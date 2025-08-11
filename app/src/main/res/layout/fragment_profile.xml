@@ -144,6 +144,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Información de la cuenta -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -166,32 +167,67 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"/>
 
-                <TextView
-                    android:id="@+id/tvFechaCreacion"
-                    android:text="Fecha de creación"
-                    android:textSize="15sp"
-                    android:textColor="@color/text_primary"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"/>
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:text="Fecha de creación:"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvFechaCreacion"
+                        android:text="2025-08-08 10:54:45"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"/>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvFechaActualizacion"
-                    android:text="Fecha de actualización"
-                    android:textSize="15sp"
-                    android:textColor="@color/text_primary"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"/>
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:text="Fecha actualización:"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvFechaActualizacion"
+                        android:text="2025-08-11 13:14:10"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"/>
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvActivo"
-                    android:text="Activo"
-                    android:textSize="15sp"
-                    android:textColor="@color/text_primary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:text="Cliente activo:"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvActivo"
+                        android:text="Sí"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"/>
+                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

@@ -79,6 +79,9 @@ public class Quotation {
     @SerializedName("email")
     private String email;
 
+    @SerializedName("precio_final")
+    private String precioFinal; 
+
     // Constructors
     public Quotation() {}
 
@@ -88,6 +91,10 @@ public class Quotation {
         this.tipoUbicacion = tipoUbicacion;
         this.fechaServicio = fechaServicio;
         this.horaServicio = horaServicio;
+    }
+
+    public String getPrecioFinal() {
+    return precioFinal;
     }
 
     // Getters and Setters
@@ -170,6 +177,15 @@ public class Quotation {
     public String getPrecioFormateado() {
         return "L. " + String.format("%.2f", precioCotizado);
     }
+
+    public String getPrecioFinalFormateado() {
+    try {
+        double precio = Double.parseDouble(precioFinal);
+        return "L. " + String.format("%.2f", precio);
+    } catch (Exception e) {
+        return "L. 0.00";
+    }
+}
 
     public String getClienteNombre() {
         return nombre + " " + apellido;

@@ -26,6 +26,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.Map;
+import java.util.HashMap;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ProfileFragment extends Fragment {
     private TextView tvEmail, tvTipoUsuario, tvFechaCreacion, tvFechaActualizacion, tvActivo;
     private TextInputEditText etNombre, etApellido, etTelefono, etPais;
@@ -84,22 +92,34 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private String formatDate(String dateStr) {
+    if (dateStr == null) return "";
+    try {
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = inputFormat.parse(dateStr);
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        return outputFormat.format(date);
+    } catch (ParseException e) {
+        return dateStr;
+    }
+}
+
     private void setupClickListeners() {
         btnActualizar.setOnClickListener(v -> updateProfile());
     }
 
     private void bindUserData(User user) {
-        tvEmail.setText(user.getEmail());
-        tvTipoUsuario.setText(user.getTipoUsuario());
-        tvFechaCreacion.setText(user.getFechaCreacion());
-        tvFechaActualizacion.setText(user.getFechaActualizacion());
-        tvActivo.setText(user.getActivo() == 1 ? "Sí" : "No");
-        
-        etNombre.setText(user.getNombre());
-        etApellido.setText(user.getApellido());
-        etTelefono.setText(user.getTelefono());
-        etPais.setText(user.getPais());
-    }
+    tvEmail.setText(user.getEmail());
+    tvTipoUsuario.setText(user.getTipoUsuario());
+    tvFechaCreacion.setText(formatDate(user.getFechaCreacion()));
+    tvFechaActualizacion.setText(formatDate(user.getFechaActualizacion()));
+    tvActivo.setText(user.getActivo() == 1 ? "Sí" : "No");
+
+    etNombre.setText(user.getNombre());
+    etApellido.setText(user.getApellido());
+    etTelefono.setText(user.getTelefono());
+    etPais.setText(user.getPais());
+}
 
     private void updateProfile() {
         String nombre = etNombre.getText() != null ? etNombre.getText().toString().trim() : "";

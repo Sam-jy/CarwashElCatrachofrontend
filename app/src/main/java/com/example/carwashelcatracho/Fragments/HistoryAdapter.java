@@ -58,7 +58,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             tvServicio.setText(q.getServicioNombre());
             tvVehiculo.setText(q.getMarca() + " " + q.getModelo() + " - " + q.getPlaca());
             tvFecha.setText(q.getFechaServicio());
-            tvPrecio.setText(q.getPrecioFormateado());
+            tvPrecio.setText(q.getPrecioFinalFormateado());
             tvEstado.setText(q.getEstado());
         }
     }

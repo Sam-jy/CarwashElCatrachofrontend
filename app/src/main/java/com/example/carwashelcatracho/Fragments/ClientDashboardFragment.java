@@ -86,7 +86,7 @@ public class ClientDashboardFragment extends Fragment {
         });
 
         cardCreateQuotation.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_clientDashboard_to_quotations);
+            Navigation.findNavController(v).navigate(R.id.action_quotations_to_createQuotation);
         });
 
         cardQuotations.setOnClickListener(v -> {
