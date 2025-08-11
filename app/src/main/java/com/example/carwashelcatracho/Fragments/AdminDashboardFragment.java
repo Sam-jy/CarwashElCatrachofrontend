@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class AdminDashboardFragment extends Fragment {
 
-    private TextView tvTitle;
+    //private TextView tvTitle;
     private ProgressBar progressBar;
 
     private TextView tvUsuariosClientes, tvUsuariosAdmins, tvUsuariosVerificadosClientes, tvUsuariosVerificadosAdmins;
@@ -57,15 +57,27 @@ public class AdminDashboardFragment extends Fragment {
         sessionManager = new SessionManager(requireContext());
         apiService = RetrofitClient.getInstance().getApiService();
 
-        if (sessionManager.getUser() != null) {
-            tvTitle.setText("Bienvenido, " + sessionManager.getUser().getNombreCompleto());
+        androidx.appcompat.widget.Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setOnMenuItemClickListener(item -> {
+        if (item.getItemId() == R.id.action_logout) {
+            sessionManager.logout();
+            Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show();
+            Navigation.findNavController(requireView()).navigate(R.id.mainFragment);
+            return true;
         }
+        return false;
+    });
+
+
+        // if (sessionManager.getUser() != null) {
+        //     tvTitle.setText("Bienvenido, " + sessionManager.getUser().getNombreCompleto());
+        // }
 
         loadDashboard();
     }
 
     private void bindViews(View view) {
-        tvTitle = view.findViewById(R.id.tv_title);
+        //tvTitle = view.findViewById(R.id.tv_title);
         progressBar = view.findViewById(R.id.progress_bar);
 
         tvUsuariosClientes = view.findViewById(R.id.tv_usuarios_clientes);
