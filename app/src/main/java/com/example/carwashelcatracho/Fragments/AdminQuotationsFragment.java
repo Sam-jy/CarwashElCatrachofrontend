@@ -92,7 +92,7 @@ public class AdminQuotationsFragment extends Fragment {
         String[] estados = {"Todas", "Pendiente", "Enviada", "Aceptada", "Completada", "Rechazada", "Cancelada"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_dropdown_item_1line, estados);
         spinnerEstado.setAdapter(adapter);
-        spinnerEstado.setText("Todas", false);
+        spinnerEstado.setText("Pendiente", false);
     }
 
     private void setupClickListeners() {
